@@ -29,7 +29,9 @@
 // ##########################################################################################
 // ##                    PiBot options
 // ##########################################################################################
-#define VH2-FM_VERSION "1.03.1"
+//#define PiBot_FM_VERSION "1.03"
+//#define  PiBot_Firmware_FTP  "http://www.pibot.com/pxl/pibot-firmware/"
+#define PiBot_FM_VERSION "1.03.1"
 #define  PiBot_Firmware_FTP  "http://www.vivahome.eu"
 ///****** PiBot customize  function enable
 #define PI_CUSTOMIZE true   ////**** false not add pibot custom data
