@@ -5,7 +5,7 @@
 #define ONEPAGECONFIGURE_H
 //#################### Board Select #######################################
 // PiBot for Repetier V1.0-1.3    = 314   // PiBot for Repetier V1.4-1.6    = 315   // PiBot Controller   Rev2.0       = 316  
-#define MOTHERBOARD                    316 
+#define MOTHERBOARD                    315 
 //############### Controller Rev2.0 Channel Select ###############################
 // 0(decade)=000(binary): A4 A2 A0(physical); 1=001: A4 A2 A1; 2=010: A4 A3 A0; 3=011: A4 A3 A1; /
 // 4(decade)=100(binary): A5 A2 A0(physical); 5=101: A5 A2 A1; 6=110: A5 A3 A0; 7=111: A5 A3 A1; Other integer=0.
@@ -43,10 +43,10 @@
 //#################### heated bed options ###################################
 #define HAVE_HEATED_BED                true             ///****Heated Bed 
 //#################### LCD options ########################################
-#define UI_PRINTER_NAME                "PiBot3DPrinter" ///****input your Logo string
-#define UI_PRINTER_COMPANY             "BanDao"         ///****input your company name
-#define DispReady                      "PiBot ready"    ///****input your machine ready string
-#define DispIdel                       "PiBot idle"     ///****input your machine Idle string
+#define UI_PRINTER_NAME                "VH2 3DPrinter" ///****input your Logo string
+#define UI_PRINTER_COMPANY             "Viva Home"         ///****input your company name
+#define DispReady                      "VH2 ready"    ///****input your machine ready string
+#define DispIdel                       "VH2 idle"     ///****input your machine Idle string
 //## Delta options (skip this,if your don't building the delta printer)############################
 #define DELTA                          false            ///***define Delta printer                      
 #define DELTA_AXIS_STEPS_PER_MM        80               ///***steps/mm for Delta Stepper Motor(three motor with same parameters)

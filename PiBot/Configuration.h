@@ -94,7 +94,7 @@ To override EEPROM settings with config settings, set EEPROM_MODE 0
 // Sanguish Beta                = 501
 
 #if MOTHERBOARD!=314 || MOTHERBOARD!=315 || MOTHERBOARD!=316
-#define MOTHERBOARD 316
+#define MOTHERBOARD 315
 #endif
 #include "pins.h"
 
@@ -1494,7 +1494,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 	#if PiBot_V_1_0==true 
     	#define BAUDRATE 38400  /////***** Hardware Version before than 1.4
     #else
-	    #define BAUDRATE 115200   ////***defualt PiBot
+	    #define BAUDRATE 250000   ////***defualt PiBot
 	#endif
 	#else
 		#define BAUDRATE 250000
@@ -1814,16 +1814,16 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     6 = Swedish
     */
     #if PiBot
-	#define UI_LANGUAGE 0
+	#define UI_LANGUAGE 1
 	#else
     #define UI_LANGUAGE 1
 	#endif
     // This is line 2 of the status display at startup. Change to your like.
 #ifndef UI_PRINTER_NAME
-    #define UI_PRINTER_NAME "PiBot 3D"
+    #define UI_PRINTER_NAME "VH2 3D"
 #endif
 #ifndef UI_PRINTER_COMPANY
-    #define UI_PRINTER_COMPANY "BanDao ELE"
+    #define UI_PRINTER_COMPANY "Viva Home GnbH"
 #endif
 
     /** Animate switches between menus etc. */  

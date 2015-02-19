@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{ABAF6C46-BE73-490B-8428-FA618CCC2471}</ProjectGuid>
+    <RootNamespace>PiBot</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\hardware\arduino\cores\arduino;U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\hardware\arduino\variants\mega;U:\Entwicklung\VH-3d_Drucker-Version2\Software\pibot-VH2-printer-firmware-v1-03\PiBot;U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\libraries\SPI;U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\libraries\SPI\utility;U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\libraries;U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\hardware\arduino\libraries;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers;C:\Users\volkhard\Documents\Arduino\libraries;u:\entwicklung\arduino\arduino-1.0.5-pibot-controller\hardware\tools\avr\avr\include\;u:\entwicklung\arduino\arduino-1.0.5-pibot-controller\hardware\tools\avr\avr\include\avr\;u:\entwicklung\arduino\arduino-1.0.5-pibot-controller\hardware\tools\avr\avr\;u:\entwicklung\arduino\arduino-1.0.5-pibot-controller\hardware\tools\avr\lib\gcc\avr\4.3.2\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>U:\Entwicklung\VH-3d_Drucker-Version2\Software\pibot-VH2-printer-firmware-v1-03\PiBot\Visual Micro\.PiBot.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>__AVR_ATmega2560__;ARDUINO=105;ARDUINO_MAIN;__AVR__;__avr__;F_CPU=16000000L;__cplusplus;GCC_VERSION=40302;ARDUINO_ARCH_AVR;ARDUINO_AVR_PIBOTMEGA2560;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="PiBot.ino">
+      <FileType>CppCode</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Commands.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Communication.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Configuration.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Eeprom.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Extruder.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="fastio.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="FatStructs.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="gcode.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="HAL.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="motion.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="OnePageConfigure.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="PiBot.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="pins.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Printer.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="SdFat.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="u8glib_ex.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="ui.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="uiconfig.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="uilang.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="uimenu.h">
+      <FileType>CppCode</FileType>
+    </ClInclude>
+    <ClInclude Include="Visual Micro\.PiBot.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Commands.cpp" />
+    <ClCompile Include="Communication.cpp" />
+    <ClCompile Include="Eeprom.cpp" />
+    <ClCompile Include="Extruder.cpp" />
+    <ClCompile Include="gcode.cpp" />
+    <ClCompile Include="HAL.cpp" />
+    <ClCompile Include="motion.cpp" />
+    <ClCompile Include="Printer.cpp" />
+    <ClCompile Include="SDCard.cpp" />
+    <ClCompile Include="SdFat.cpp" />
+    <ClCompile Include="ui.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.board.name="pibotmega2560" arduino.board.desc="PiBot Controller Rev1.x" arduino.board.property_bag="name=PiBot Controller Rev1.x&#xD;&#xA;upload.protocol=stk500&#xD;&#xA;upload.maximum_size=258048&#xD;&#xA;upload.speed=57600&#xD;&#xA;bootloader.low_fuses=0xFF&#xD;&#xA;bootloader.high_fuses=0xD8&#xD;&#xA;bootloader.extended_fuses=0xFD&#xD;&#xA;bootloader.path=atmega&#xD;&#xA;bootloader.file=ATmegaBOOT_168_mega2560.hex&#xD;&#xA;bootloader.unlock_bits=0x3F&#xD;&#xA;bootloader.lock_bits=0x0F&#xD;&#xA;build.mcu=atmega2560&#xD;&#xA;build.f_cpu=16000000L&#xD;&#xA;build.core=arduino&#xD;&#xA;build.variant=mega&#xD;&#xA;runtime.ide.path=U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller&#xD;&#xA;build.system.path=U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\hardware\arduino\system&#xD;&#xA;runtime.ide.version=105&#xD;&#xA;originalid=pibotmega2560&#xD;&#xA;vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x&#xD;&#xA;ide.hint=Arduino 0023 and 1.0.x Ide&#xD;&#xA;ide.location.key=Arduino&#xD;&#xA;ide.location.ide.winreg=Arduino 1.0.x Application&#xD;&#xA;ide.location.sketchbook.winreg=Arduino 1.0.x Sketchbook&#xD;&#xA;ide.location.sketchbook.preferences=sketchbook.path&#xD;&#xA;ide.location.sketchbook.default=%MYDOCUMENTS%\arduino&#xD;&#xA;ide.location.preferences=%VM_APPDATA_ROAMING%\arduino\preferences.txt&#xD;&#xA;ide.default.package=arduino&#xD;&#xA;ide.default.platform=avr&#xD;&#xA;ide.multiplatform=true&#xD;&#xA;ide.includes=arduino.h&#xD;&#xA;ide.platformswithoutpackage=true&#xD;&#xA;ide.includes.fallback=wprogram.h&#xD;&#xA;ide.extension=ino&#xD;&#xA;ide.extension.fallback=pde&#xD;&#xA;ide.versionLTEQ=149&#xD;&#xA;ide.exe=arduino.exe&#xD;&#xA;ide.hosts=atmel&#xD;&#xA;ide.url=http://arduino.cc/en/Main/Software&#xD;&#xA;vm.debug=true&#xD;&#xA;software=ARDUINO&#xD;&#xA;ide.appid=arduino10x&#xD;&#xA;location.sketchbook=C:\Users\volkhard\Documents\Arduino\&#xD;&#xA;vm.core.include=arduino.h&#xD;&#xA;build.board=AVR_PIBOTMEGA2560&#xD;&#xA;vm.boardsource.path=U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\hardware\arduino&#xD;&#xA;runtime.platform.path=U:\Entwicklung\arduino\arduino-1.0.5-PiBot-Controller\hardware\arduino&#xD;&#xA;vm.platformname.name=avr&#xD;&#xA;build.arch=AVR&#xD;&#xA;" arduino.build.mcu="atmega2560" arduino.build.f_cpu="16000000L" arduino.build.core="arduino" arduino.upload.protocol="stk500" arduino.upload.speed="57600" arduino.upload.maximum_size="258048" visualmicro.application.name="arduino10x" visualmicro.package.name="arduino" visualmicro.platform.name="avr" arduino.upload.port="COM4" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
