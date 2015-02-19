@@ -43,7 +43,8 @@ FSTRINGVALUE(Com::tPIHDESN,PiBot_HD_ESN)
 ///////////////***************
 FSTRINGVALUE(Com::tDebug,"Debug:");
 FSTRINGVALUE(Com::tOk,"ok")
-FSTRINGVALUE(Com::tNewline,"\r\n")
+FSTRINGVALUE(Com::tNewline,"\r\n")  // sent CR+Newline to serial
+FSTRINGVALUE(Com::tReturn,"\r")  // added: sent simple CR to serial
 FSTRINGVALUE(Com::tNAN,"NAN")
 FSTRINGVALUE(Com::tINF,"INF")
 FSTRINGVALUE(Com::tError,"Error:")

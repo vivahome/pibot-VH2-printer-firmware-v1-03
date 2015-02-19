@@ -2583,6 +2583,21 @@ void UIDisplay::executeAction(int action)
             TOGGLE(PS_ON_PIN);
 #endif
             break;
+
+// ####################################            Insert from VE
+        case UI_ACTION_VE:
+            //#if PS_ON_PIN>=0 // avoid compiler errors when the power supply pin is disabled
+            Commands::waitUntilEndOfAllMoves();
+            #if (X_MIN_PIN > -1) && MIN_HARDWARE_ENDSTOP_X
+              Com::printF(Com::tXMinColon);
+              Com::printF(Printer::isXMinEndstopHit()?Com::tHSpace:Com::tLSpace);
+            #endif
+            SET_OUTPUT(PS_ON_PIN); //GND
+            TOGGLE(PS_ON_PIN);
+           // #endif
+            break;
+// ##################################            end insert ve
+
 #if CASE_LIGHTS_PIN > 0
         case UI_ACTION_LIGHTS_ONOFF:
             TOGGLE(CASE_LIGHTS_PIN);

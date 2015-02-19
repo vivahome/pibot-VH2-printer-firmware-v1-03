@@ -36,7 +36,7 @@
 ///****** PiBot customize  function enable
 #define PI_CUSTOMIZE true   ////**** false not add pibot custom data
 #define mechanical   true  ////**** mechanical or optical ednstop
-#define optical      false
+#define optical      true
 #define six          true  /////**** six or three endstop
 #define three        false
 // ##########################################################################################

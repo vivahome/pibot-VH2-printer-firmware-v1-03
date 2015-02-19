@@ -845,6 +845,21 @@ void Commands::executeGCode(GCode *com)
 
         switch( com->M )
         {
+
+//#####################ergänzungen M-Codes  ve  this is working
+#if vivahome_additions
+		case 777:  // M777
+        #if (X_MIN_PIN > -1) && MIN_HARDWARE_ENDSTOP_X
+            Com::printF(Com::tXMinColon);
+            Com::printF(Printer::isXMinEndstopHit()?Com::tHSpace:Com::tLSpace);
+			Com::printF(Com::tReturn);
+            printTemperatures(com->hasX());
+            Com::printF(Com::tReturn);
+            printCurrentPosition();
+#endif
+            break;
+#endif
+//#################### ende Ergänzungen M-Codes ve
 #if SDSUPPORT
 
         case 20: // M20 - list SD card
@@ -1212,6 +1227,7 @@ void Commands::executeGCode(GCode *com)
             Com::printF(Com::tXMinColon);
             Com::printF(Printer::isXMinEndstopHit()?Com::tHSpace:Com::tLSpace);
 #endif
+
 #if (X_MAX_PIN > -1) && MAX_HARDWARE_ENDSTOP_X
             Com::printF(Com::tXMaxColon);
             Com::printF(Printer::isXMaxEndstopHit()?Com::tHSpace:Com::tLSpace);

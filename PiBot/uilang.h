@@ -280,7 +280,11 @@
 #define UI_TEXT_STRING_HM_DEADTIME     "Dead Time"
 #define UI_TEXT_STRING_HM_SLOWBANG     "SlowBang"
 #define UI_TEXT_STOP_PRINT "Stop Print"
-#define UI_TEXT_Z_BABYSTEPPING "Z Babystepping"   ////////********
+#define UI_TEXT_Z_BABYSTEPPING "Z Babystepping"   
+
+//  eigene Ergänzungen
+#define UI_TEXT_VE  "VE Befehl"   //Test based on UI_ACTION_POWER
+////////********
 
 // *************** German translation ****************
 

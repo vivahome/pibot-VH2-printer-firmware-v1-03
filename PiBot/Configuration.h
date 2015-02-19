@@ -1531,7 +1531,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     the next command. Not receiving it will cause your printer to stop. Sending this string every
     second, if our queue is empty should prevent this. Comment it, if you don't wan't this feature. */
 #if PiBot
-#define WAITING_IDENTIFIER "PIRD"   ///////*****wait->PIRD:PiBot Ready
+#define WAITING_IDENTIFIER "VH2 ready"   ///////*****wait->PIRD:PiBot Ready
 #else
 #define WAITING_IDENTIFIER "wait"  
 #endif
@@ -1559,7 +1559,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     IMPORTANT: With mode <>0 some changes in Configuration.h are not set any more, as they are
                taken from the EEPROM.
     */
-    #define EEPROM_MODE 1
+    #define EEPROM_MODE 0
 
 
     /**************** duplicate motor driver ***************

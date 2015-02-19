@@ -11,24 +11,29 @@
 // 4(decade)=100(binary): A5 A2 A0(physical); 5=101: A5 A2 A1; 6=110: A5 A3 A0; 7=111: A5 A3 A1; Other integer=0.
 #define Thermistor_Solution            0                ///***PiBot Controller Rev2.0 sensor channel choose, skip this for other boards.
 //#################### axis max length ####################################
-#define X_MAX_LENGTH                   220              ///***X Axis Size mm
-#define Y_MAX_LENGTH                   200              ///***Y Axis Size mm
-#define Z_MAX_LENGTH                   165              ///***Z Axis Size mm
+#define X_MAX_LENGTH                   360              ///***X Axis Size mm
+#define Y_MAX_LENGTH                   300              ///***Y Axis Size mm
+#define Z_MAX_LENGTH                   260              ///***Z Axis Size mm
 //#################### steps /mm ########################################
-#define XAXIS_STEPS_PER_MM             64          ///***X steps/mm
-#define YAXIS_STEPS_PER_MM             64           ///***Y steps/mm
-#define ZAXIS_STEPS_PER_MM             2133.333         ///***Z steps/mm
+//Berechnung Zahnriemenantrieb   schritte_pro_mm = (vollschritte_pro_umdrehung * anzahl_mikroschritte) / (zahnriemen_teilung * zähnezahl) 
+//PiBot Microschritte 16,  HDT 3M 9
+#define XAXIS_STEPS_PER_MM             53.33          ///***X steps/mm   Zahnrad 20 Zähne
+#define YAXIS_STEPS_PER_MM             53.33           ///***Y steps/mm   Zahnrad 20 Zähne
+
+// Berechnung Trapezgewinde  Schritte/mm = (Vollschritte pro Umdrehung x Anzahl Microschritte) / Gewindesteigung
+// PiBot Microschritte 16    Trapezwelle TR 12x3
+#define ZAXIS_STEPS_PER_MM             1066.66667         ///***Z steps/mm      3mm Steigung
 //#################### direction invert #####################################
 #define INVERT_X_DIR                   false            ///***Change the direction by false or true
 #define INVERT_Y_DIR                   false            ///***Change the direction by false or true
 #define INVERT_Z_DIR                   false            ///***Change the direction by false or true
 //#################### Endstop option #####################################
-#define X_MODEL_ENDSTOP                mechanical          ///***Endstop Type: mechanical or optical (X min max)
-#define Y_MODEL_ENDSTOP                mechanical          ///***Endstop Type: mechanical or optical (Y min max)
-#define Z_MODEL_ENDSTOP                mechanical          ///***Endstop Type: mechanical or optical (Z min max)
+#define X_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (X min max)
+#define Y_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (Y min max)
+#define Z_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (Z min max)
 #define NUM_ENDSTOP                    Six            ///***Endstop Number: six  or  three  
 //#################### home direction invert #####################################
-#define X_HOME_DIR                     -1               ///***Change the direction by -1 (min) or 1 (max)
+#define X_HOME_DIR                     1               ///***Change the direction by -1 (min) or 1 (max)
 #define Y_HOME_DIR                     -1               ///***Change the direction by -1 (min) or 1 (max)
 #define Z_HOME_DIR                     -1               ///***Change the direction by -1 (min) or 1 (max)
 //#################### extruder options ####################################
@@ -62,6 +67,9 @@
 #define Z_PROBE_Y3                     110   			 //   * P2(X2,Y2)
 #define Z_PROBE_X_OFFSET               35 	             ///******distance of senser and extruder in X axis    extr1(0,0) * -------| X_Offset
 #define Z_PROBE_Y_OFFSET               -15                ///******distance of senser and extruder in Y axis                  Y_Offset  * (X_Offset,Y_Offset)
+
+//###########################  Vivahome additions  #################################
+#define vivahome_additions			true                // should the vivahome additions be used?
 
 #endif
 
