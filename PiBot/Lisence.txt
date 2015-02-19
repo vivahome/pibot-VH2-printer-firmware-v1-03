@@ -1,0 +1,64 @@
+                   PiBot 3D Printer Firmware
+Copyright 2013-2014 Guilin BanDao ELE TEC Co ,.Ltd.
+Original Writer: Littwin & Thomas Pan 
+
+License
+
+1 Notice:
+	a. Without permission, the firmware can not be used for commercial operations.  
+	b. When you find the defects and deficiencies in this firmware, please email to:  
+ 	    panxinlong7373@gmail.com
+
+2 Support and Updates:
+
+ The licensor is not obligated to provide support, fix bugs or provide 
+ updates. In what type and frequency this happens is solely the responsibility 
+ of the licensor
+
+3 Restrictions:
+
+ The newly developed codes firmware is based on PiBot firmware version 0.90 with Apache
+ License, Version 2.0. 
+
+4 Warranty restriction:
+
+ The firmware is provided "as is" without warranty of any kind, either 
+ express or implied, including without limitation any implied warranties 
+ of condition, uninterrupted use, merchantability, fitness for a particular 
+ purpose, or non-infringement. The Licensor does not give any guarantee or 
+ warranty to the accuracy or completeness of the firmware and the provided 
+ functions. The licensor is not liable for any damages or viruses, trojans, 
+ malware or other malicious firmware that result from the use of the firmware. 
+ The program was written by the licensor to the best of knowledge and belief 
+ without malicious programs.
+
+5 Limitation of Liability:
+
+ The author of this program is not liable for damage to firmware or hardware, 
+ or property damage caused by the use of the program, unless they are based 
+ on gross negligence or intent on the part of the author, his agents or his 
+ legal representatives.
+
+6 Warning: 
+
+ 3D printers contain parts that are very hot and can cause a fire in
+ case of errors or misuse. Therefore, 3D printers may only be operated 
+ under constant supervision. Also, toxins can be set free upon melting 
+ the filament depending on the material. Contact the manufacturer of the 
+ filament to ask for risks and dangers. The 3D printer may therefore be 
+ used only in well-ventilated areas.
+
+7 Privacy Policy:
+
+ The firmware not connect to web servers. It will not transmit personal data, 
+ statistics or files.
+
+8 Third-Party library:
+
+ This firmware contains or is accompanied by third-party library, data or 
+ other materials, which supplement the PiBot-firmware functionality. For 
+ these programs, the licenses of the library applies. By accepting this 
+ license, you acknowledge and agree that you comply with the third-party 
+ terms and conditions and that the licensor has no responsibility and gives 
+ no warrenties for third-party library. You find these terms and conditions 
+ on the third-party web pages or in the about boxes.
