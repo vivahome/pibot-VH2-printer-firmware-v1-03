@@ -608,7 +608,11 @@ void Printer::setup()
     WRITE(Y2_ENABLE_PIN,!Y_ENABLE_ON);
 #endif
 #endif
-
+//  ####################  Ergänzung set input pin for Filament check  ve 23022015
+#if FILAMENT_PIN>-1
+		SET_INPUT(FILAMENT_PIN);
+#endif
+//  ####################  ende Ergänzung pin Filament check
 #if FEATURE_TWO_ZSTEPPER
     SET_OUTPUT(Z2_STEP_PIN);
     SET_OUTPUT(Z2_DIR_PIN);

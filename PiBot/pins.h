@@ -201,19 +201,21 @@ STEPPER_CURRENT_CONTROL
 #define E2_DIR_PIN          14
 #define E2_ENABLE_PIN       39
 
+// will not be used because not using 4 Extruder
+// so free up this port for different usage
 //uncomment when use 4th extruder
-#define E3_STEP_PIN         41
-#define E3_DIR_PIN          38
+//#define E3_STEP_PIN         41
+//#define E3_DIR_PIN          38
 #define E3_ENABLE_PIN       13
 
 #define SDPOWER            -1
 #define SDCARDDETECT 	   10
 
-#define LED_PIN            30
+#define LED_PIN            30  
 #define FAN_PIN            7        ////*****fan
 //uncomment when the 2nd fan used - works only without heated bed!
 #define FAN2_PIN           2
-#define PS_ON_PIN          40
+#define PS_ON_PIN          40    // inactiv ve
 #define KILL_PIN           -1
 
 #define HEATER_0_PIN       3    ////**** Extuder1
@@ -229,12 +231,20 @@ STEPPER_CURRENT_CONTROL
 #define TEMP_2_PIN         13   // ANALOG NUMBERING   ////***Extuder2
 //uncomment when 3 extruder used
 #define TEMP_3_PIN         12   // ANALOG NUMBERING   ////***Extuder3
+
+// will not be used because not using 4 Extruder
+// so free up this port for different usage
 //uncomment when 4 extruder used
-#define TEMP_4_PIN         11   // ANALOG NUMBERING   ////***Extuder4
+//#define TEMP_4_PIN         11   // ANALOG NUMBERING   ////***Extuder4
 
 /////////////////////*********************************************
-#define PiBot_Z_PROBE_PIN  64   /////****PiBot use this pin as Z-Probing pin
+#define PiBot_Z_PROBE_PIN  63   /////****PiBot use this pin as Z-Probing pin
 //////////////////////////////////////////************************
+
+// ############################ Ergänzung Filament Check  VE 23022015
+#define FILAMENT_PIN 34   // zu testzwecken den  xminpin nehmen  sollte aber später pin 40 sein
+
+//############################  Ende Ergänzung
 
 ////***ISP for TFcard
 #define SDSS             53
@@ -2004,7 +2014,7 @@ STEPPER_CURRENT_CONTROL
 #define SENSITIVE_PINS {0, 1, X_STEP_PIN, X_DIR_PIN, X_ENABLE_PIN, X_MIN_PIN, X_MAX_PIN, \
 	    Y_STEP_PIN, Y_DIR_PIN, Y_ENABLE_PIN, Y_MIN_PIN, Y_MAX_PIN, Z_STEP_PIN,Z_DIR_PIN,  \
 	    Z_ENABLE_PIN, Z_MIN_PIN, Z_MAX_PIN, LED_PIN, PS_ON_PIN, HEATER_0_PIN, HEATER_1_PIN,\
-	    FAN_PIN, E0_PINS E1_PINS E2_PINS E3_PINS TEMP_0_PIN, TEMP_1_PIN,SDSS }
+	    FAN_PIN, E0_PINS E1_PINS E2_PINS E3_PINS TEMP_0_PIN, TEMP_1_PIN,SDSS, FILAMENT_PIN }
 #define string_check ""
 #else
 #define SENSITIVE_PINS {0, 1, X_STEP_PIN, X_DIR_PIN, X_ENABLE_PIN, X_MIN_PIN, X_MAX_PIN, \

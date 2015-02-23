@@ -450,7 +450,8 @@ UI_MENU_ACTIONCOMMAND(ui_menu_quick_power,UI_TEXT_POWER,UI_ACTION_POWER);
 #define MENU_PSON_COUNT 0
 #define MENU_PSON_ENTRY
 #endif
-// ######### additonal menuitem   ve
+
+// ####################################### additonal menuitem   ve
 //#if PS_ON_PIN>=0
 UI_MENU_ACTIONCOMMAND(ui_menu_quick_ve,UI_TEXT_VE,UI_ACTION_VE);
 #define MENU_PSON_COUNT 1
@@ -461,7 +462,7 @@ UI_MENU_ACTIONCOMMAND(ui_menu_quick_ve,UI_TEXT_VE,UI_ACTION_VE);
 //#endif
 
 
-// ######### end additonal ve
+// ######### #############################end additonal ve
 
 #if CASE_LIGHTS_PIN > 0
 UI_MENU_ACTIONCOMMAND(ui_menu_toggle_light,UI_TEXT_LIGHTS_ONOFF,UI_ACTION_LIGHTS_ONOFF);

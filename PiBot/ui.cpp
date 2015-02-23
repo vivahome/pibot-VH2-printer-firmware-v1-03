@@ -2585,6 +2585,7 @@ void UIDisplay::executeAction(int action)
             break;
 
 // ####################################            Insert from VE
+
         case UI_ACTION_VE:
             //#if PS_ON_PIN>=0 // avoid compiler errors when the power supply pin is disabled
             Commands::waitUntilEndOfAllMoves();
@@ -2592,9 +2593,9 @@ void UIDisplay::executeAction(int action)
               Com::printF(Com::tXMinColon);
               Com::printF(Printer::isXMinEndstopHit()?Com::tHSpace:Com::tLSpace);
             #endif
-            SET_OUTPUT(PS_ON_PIN); //GND
-            TOGGLE(PS_ON_PIN);
-           // #endif
+			#if (FILAMENT_PIN >-1)
+			  Com::printF(Printer::isFilament()?Com::tIsFilamentOUT:Com::tIsFilamentOK);
+           #endif
             break;
 // ##################################            end insert ve
 

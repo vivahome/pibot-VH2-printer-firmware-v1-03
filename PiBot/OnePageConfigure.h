@@ -31,7 +31,7 @@
 #define X_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (X min max)
 #define Y_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (Y min max)
 #define Z_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (Z min max)
-#define NUM_ENDSTOP                    Six            ///***Endstop Number: six  or  three  
+#define NUM_ENDSTOP                    six            ///***Endstop Number: six  or  three  
 //#################### home direction invert #####################################
 #define X_HOME_DIR                     1               ///***Change the direction by -1 (min) or 1 (max)
 #define Y_HOME_DIR                     -1               ///***Change the direction by -1 (min) or 1 (max)
@@ -58,7 +58,7 @@
 #define DELTA_MAX_RADIUS               200              ///***Max. radius the printer should be able to reach. 
 #define DELTA_RADIUS                   174              ///***Delta's round Build platform Radius mm (safty zone )
 //## Build platform correction options (skip this,if your don't with Z-Probing)########################
-#define PLATFORM_AUTOMATICALLY_CORRECT false             ///*** Z-min-Probing and auto correct your build platform (Pin:64)
+#define PLATFORM_AUTOMATICALLY_CORRECT true             ///*** Z-min-Probing and auto correct your build platform (Pin:64)
 #define Z_PROBE_X1                     40   			 //   Probing point  (make sure them within your build platform, and near the edge)        
 #define Z_PROBE_Y1                     40    			 //   * P1(X1,Y1)   
 #define Z_PROBE_X2                     40   			 //                                        

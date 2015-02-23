@@ -1253,7 +1253,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
         Overridden if EEPROM activated.
     */
 #if PiBot
-#define STEPPER_INACTIVE_TIME 60
+#define STEPPER_INACTIVE_TIME 30
 #else
 #define STEPPER_INACTIVE_TIME 360  ///***120L
 #endif
@@ -1574,7 +1574,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 	#define X2_DIR_PIN	  E2_DIR_PIN
 	#define X2_ENABLE_PIN E2_ENABLE_PIN
 
-	#define FEATURE_TWO_YSTEPPER false
+	#define FEATURE_TWO_YSTEPPER true  // we need two stepper for Y movements  one stepper have to run CCW
 	#define Y2_STEP_PIN   E2_STEP_PIN
 	#define Y2_DIR_PIN	  E2_DIR_PIN
 	#define Y2_ENABLE_PIN E2_ENABLE_PIN

@@ -42,7 +42,7 @@ void Commands::commandLoop()
         GCode *code = GCode::peekCurrentCommand();
         //UI_SLOW; // do longer timed user interface action
         UI_MEDIUM; // do check encoder
-        if(code)
+      if(code)
         {
 #if SDSUPPORT
             if(sd.savetosd)
@@ -77,6 +77,7 @@ void Commands::checkForPeriodicalActions()
     {
         if(manageMonitor<=1+NUM_EXTRUDER)
             writeMonitor();
+	//	Com::printF(Com::tXMinColon);   // check filament pin
         counter250ms=5;
     }
     UI_SLOW;
@@ -847,16 +848,50 @@ void Commands::executeGCode(GCode *com)
         {
 
 //#####################ergänzungen M-Codes  ve  this is working
-#if vivahome_additions
+
+            break;
+	#if vivahome_additions
+		case 778:    // M778  abfrage Filament
+			#if FILAMENT_PIN>-1
+			 Commands::waitUntilEndOfAllMoves();
+            previousMillisCmd = HAL::timeInMilliseconds();
+				Com::printF(Printer::isFilament()?Com::tIsFilamentOK:Com::tIsFilamentOUT);
+			#endif
+			break;
+
 		case 777:  // M777
-        #if (X_MIN_PIN > -1) && MIN_HARDWARE_ENDSTOP_X
-            Com::printF(Com::tXMinColon);
-            Com::printF(Printer::isXMinEndstopHit()?Com::tHSpace:Com::tLSpace);
+			Commands::waitUntilEndOfAllMoves();
 			Com::printF(Com::tReturn);
-            printTemperatures(com->hasX());
-            Com::printF(Com::tReturn);
-            printCurrentPosition();
-#endif
+			printTemperatures(com->hasX());  // print Temperatures
+			Com::printF(Com::tReturn);
+			printCurrentPosition();			// Print current Position
+					
+	#if (X_MIN_PIN > -1) && MIN_HARDWARE_ENDSTOP_X	// Print Endstop Status X, Y, Z
+				Com::printF(Com::tXMinColon);
+				Com::printF(Printer::isXMinEndstopHit()?Com::tHSpace:Com::tLSpace);
+	#endif
+
+	#if (X_MAX_PIN > -1) && MAX_HARDWARE_ENDSTOP_X
+				Com::printF(Com::tXMaxColon);
+				Com::printF(Printer::isXMaxEndstopHit()?Com::tHSpace:Com::tLSpace);
+	#endif
+	#if (Y_MIN_PIN > -1) && MIN_HARDWARE_ENDSTOP_Y
+				Com::printF(Com::tYMinColon);
+				Com::printF(Printer::isYMinEndstopHit()?Com::tHSpace:Com::tLSpace);
+	#endif
+	#if (Y_MAX_PIN > -1) && MAX_HARDWARE_ENDSTOP_Y
+				Com::printF(Com::tYMaxColon);
+				Com::printF(Printer::isYMaxEndstopHit()?Com::tHSpace:Com::tLSpace);
+	#endif
+	#if (Z_MIN_PIN > -1) && MIN_HARDWARE_ENDSTOP_Z
+				Com::printF(Com::tZMinColon);
+				Com::printF(Printer::isZMinEndstopHit()?Com::tHSpace:Com::tLSpace);
+	#endif
+	#if (Z_MAX_PIN > -1) && MAX_HARDWARE_ENDSTOP_Z
+				Com::printF(Com::tZMaxColon);
+				Com::printF(Printer::isZMaxEndstopHit()?Com::tHSpace:Com::tLSpace);
+	#endif
+				Com::println();
             break;
 #endif
 //#################### ende Ergänzungen M-Codes ve

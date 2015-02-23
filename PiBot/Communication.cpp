@@ -129,6 +129,12 @@ FSTRINGVALUE(Com::tQuadraticStepsColon," quadratic steps:")
 FSTRINGVALUE(Com::tCommaSpeedEqual,", speed=")
 FSTRINGVALUE(Com::tEEPROMUpdated,"EEPROM updated")
 
+//######################## Ergänzungen VE  23022015
+
+FSTRINGVALUE(Com::tIsFilamentOK,"Filament  OK")
+FSTRINGVALUE(Com::tIsFilamentOUT,"Out of Filament")
+
+// ####################### ende ergänzungn
 FSTRINGVALUE(Com::tLinearLColon,"linear L:")
 FSTRINGVALUE(Com::tQuadraticKColon," quadratic K:")
 #if DRIVE_SYSTEM==3

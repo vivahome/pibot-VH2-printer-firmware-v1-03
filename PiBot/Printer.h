@@ -406,6 +406,18 @@ public:
         return false;
 #endif
     }
+	// ##################ergänzung für filamentsensor  ve 23022015    ##########################
+	static inline bool isFilament()
+	{
+#if FILAMENT_PIN>-1
+			return READ(FILAMENT_PIN) != ENDSTOP_X_MIN_INVERTING;
+#else
+		return false;
+#endif
+	}
+
+	// ########################## ende Ergännzung ####################
+
     static inline bool isYMinEndstopHit()
     {
 #if Y_MIN_PIN>-1 && MIN_HARDWARE_ENDSTOP_Y

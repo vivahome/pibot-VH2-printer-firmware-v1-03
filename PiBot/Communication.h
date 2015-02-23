@@ -36,6 +36,13 @@ FSTRINGVAR(tPISFESN)
 FSTRINGVAR(tPIHDESN)
 #endif
 ////////****************
+
+//###################### Ergänzung ve 23022015
+FSTRINGVAR(tIsFilamentOK)
+FSTRINGVAR(tIsFilamentOUT)
+
+
+//###################### Ende Ergänzung
 FSTRINGVAR(tDebug)
 FSTRINGVAR(tFirmware)
 FSTRINGVAR(tOk)
