@@ -30,6 +30,20 @@ const int sensitive_pins[] PROGMEM = SENSITIVE_PINS; // Sensitive pin list for M
 int Commands::lowestRAMValue = MAX_RAM;
 int Commands::lowestRAMValueSend = MAX_RAM;
 
+// ################################    Ergänzende Funktionen Viva Home
+void Commands::CheckFilament()
+		{
+		if (FILAMENT_SENSOR_PIN>-1) 
+			{
+			if (!Printer::isFilament)
+				{
+				//UIDisplay::executeAction(1099);  // 1009 entspricht dem Befehl UI_ACTION_PAUSE
+				sd.pausePrint(true);
+				}
+			}
+		}
+// ################################    Ende Ergäzende Funktionen        
+
 void Commands::commandLoop()
 {
     while(true)
@@ -853,13 +867,13 @@ void Commands::executeGCode(GCode *com)
 	#if vivahome_additions
 		case 778:    // M778  abfrage Filament
 			#if FILAMENT_PIN>-1
-			 Commands::waitUntilEndOfAllMoves();
-            previousMillisCmd = HAL::timeInMilliseconds();
+				Commands::waitUntilEndOfAllMoves();
+				previousMillisCmd = HAL::timeInMilliseconds();
 				Com::printF(Printer::isFilament()?Com::tIsFilamentOK:Com::tIsFilamentOUT);
 			#endif
-			break;
+		break;
 
-		case 777:  // M777
+		case 777:  // M777  abfrage verschiedener Werte des Druckers
 			Commands::waitUntilEndOfAllMoves();
 			Com::printF(Com::tReturn);
 			printTemperatures(com->hasX());  // print Temperatures

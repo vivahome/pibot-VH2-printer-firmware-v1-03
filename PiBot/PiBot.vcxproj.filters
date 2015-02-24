@@ -117,4 +117,9 @@
       <Filter>Quelldateien</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Anmerkungen.txt">
+      <Filter>Headerdateien</Filter>
+    </Text>
+  </ItemGroup>
 </Project>

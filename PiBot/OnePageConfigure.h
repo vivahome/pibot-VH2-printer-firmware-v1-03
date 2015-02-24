@@ -28,7 +28,7 @@
 #define INVERT_Y_DIR                   false            ///***Change the direction by false or true
 #define INVERT_Z_DIR                   false            ///***Change the direction by false or true
 //#################### Endstop option #####################################
-#define X_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (X min max)
+#define X_MODEL_ENDSTOP                mechanical          ///***Endstop Type: mechanical or optical (X min max)
 #define Y_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (Y min max)
 #define Z_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (Z min max)
 #define NUM_ENDSTOP                    six            ///***Endstop Number: six  or  three  

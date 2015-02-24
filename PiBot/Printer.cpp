@@ -609,9 +609,17 @@ void Printer::setup()
 #endif
 #endif
 //  ####################  Ergänzung set input pin for Filament check  ve 23022015
-#if FILAMENT_PIN>-1
-		SET_INPUT(FILAMENT_PIN);
-#endif
+	#if HARDWARE_FILAMENT_SENSOR
+		#if FILAMENT_PIN>-1
+		  SET_INPUT(FILAMENT_PIN);
+			#if (FILAMENT_SENSOR_TYPE==optical)
+				PULLUP(FILAMENT_PIN,HIGH);
+			#endif
+		#else
+	#error You have defined hardware Filament sensor switch without pin assignment. Set pin number for FILAMENT_SENSOR_PIN
+		#endif
+	#endif
+
 //  ####################  ende Ergänzung pin Filament check
 #if FEATURE_TWO_ZSTEPPER
     SET_OUTPUT(Z2_STEP_PIN);
@@ -826,7 +834,9 @@ void Printer::setup()
 #endif // FEATURE_WATCHDOG
 }
 
-void Printer::defaultLoopActions()
+//Hauptloop des Printers. Hier können Ergänzungen vorgenommen werden die während der Laufzeit relevant sind.
+
+void Printer::defaultLoopActions()  
 {
 
     Commands::checkForPeriodicalActions();  //check heater every n milliseconds
@@ -834,7 +844,13 @@ void Printer::defaultLoopActions()
     UI_MEDIUM; // do check encoder
     millis_t curtime = HAL::timeInMilliseconds();
     if(PrintLine::hasLines())
-        previousMillisCmd = curtime;
+	{
+        previousMillisCmd = curtime;    
+	//   ###############   own functions    ######################
+	//  Hier kann eine Ergänzung integriert werden
+	Commands::CheckFilament();   // z.B. Funktion um zu kontrollieren ob Filament vorhanden ist. Üblicherweise über einen ENdstop
+	// #################   end own functions #####################
+	}
     else
     {
         curtime -= previousMillisCmd;
@@ -843,6 +859,7 @@ void Printer::defaultLoopActions()
         if(stepperInactiveTime!=0 && curtime >  stepperInactiveTime )
             Printer::kill(true);
     }
+	
 #if defined(SDCARDDETECT) && SDCARDDETECT>-1 && defined(SDSUPPORT) && SDSUPPORT
     sd.automount();
 #endif

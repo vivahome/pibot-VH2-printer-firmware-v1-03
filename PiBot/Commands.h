@@ -44,6 +44,10 @@ public:
     static void emergencyStop();
     static void checkFreeMemory();
     static void writeLowestFreeRAM();
+
+	// Hier werden eigene Funktionen eingetragen
+	static void CheckFilament();   // Neue Funktion um Filament zu prüfen
+	// Ende neue Funktionen
 private:
     static int lowestRAMValue;
     static int lowestRAMValueSend;

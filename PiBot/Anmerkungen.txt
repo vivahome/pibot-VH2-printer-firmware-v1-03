@@ -1,0 +1,134 @@
+Hier wird beschrieben, wie eine neue Funktion in die Repetier Firmware integriert wird. 
+
+Funktion:  Check_Filament()   (by Nylocke)
+Das Filament des Druckers läuft über einen ENdschalter. Solange dieser geschlossen ist (durch das Filament) wird im Programm nichts passieren. Der Programmablauf kontrolliert ständig (in Zeitabständen),
+ob noch Filament vorhanden ist. Wenn nicht, dann wird die Funktion UI_ACTION_PAUSE aufgerufen. Diese Funktion handelt alles was notwendig ist um dem User die Möglichkeit zu 
+geben das Filament zu wechseln.
+
+1. In der Datei Commands.cpp wird eine neue Funktion erstellt. 
+	void Commands::CheckFilament()
+		{
+		if (FILAMENT_SENSOR_PIN >-1) 
+			{
+			if (!Printer::isXMinEndstopHit) && (!Printer::isXMaxEndstopHit)
+				{
+				UIDisplay::executeAction(1099);  // 1009 entspricht dem Befehl UI_ACTION_PAUSE
+				sd.pausePrint(true);   //direktaufruf, da Aufruf über UIDisplay::executeAction(1099) nicht so einfach geht
+				}
+			}
+		}
+
+	Diese neue Funktion wird in Zeile 33, direkt am Anfang der Datei.
+
+2. In Commands.h muß die Funktion noch in der Klasse Commands etwa in Zeile 43 eingetragen werden.
+	static void CheckFilament();   // Neue Funktion um Filament zu prüfen
+
+3.In Configuration.h muss noch die Variable für den Sensor Pin eingetragen werden  Ca. Zeile 1608
+	#define FILAMENT_SENSOR_PIN FILAMENT_PIN
+
+4. Neue Funktion CheckFilament vom Printer aufrufen lassen  Dies geschieht in Printer.cpp in ca. Zeile 840 nach
+	if(PrintLine::hasLines())
+        previousMillisCmd = curtime; 
+
+		// ##################   own function  ########################
+		commands::CheckFilament();
+		// #################   end own functions #####################
+	
+5. Außerdem in Printer.cpp noch bei Printer::Setup zur Vorbereitung den Pin für den Filament Sensor setzen
+
+	//  ####################  Ergänzung set input pin for Filament check  ve 23022015
+	#if HARDWARE_FILAMENT_SENSOR
+		#if FILAMENT_PIN>-1
+		  SET_INPUT(FILAMENT_PIN);
+			#if (FILAMENT_SENSOR_TYPE==optical)
+				PULLUP(FILAMENT_PIN,HIGH);
+			#endif
+		#else
+	#error You have defined hardware Filament sensor switch without pin assignment. Set pin number for FILAMENT_SENSOR_PIN
+		#endif
+	#endif
+
+
+
+	Ergänzend dazu auch eine Funktion geschrieben. (by VE)
+
+	Ziel war einen neuen M Code zu integrieren um den Filament Status aubzufragen. Ebenso sollte die Firmware auch auf ein Out-Of-Filament des Schalters reagieren. Dieses ist 
+	oben realisiert.
+
+	1. Integration des M Codes  Ca. Zeile 855
+
+		#if vivahome_additions
+			case 778:    // M778  abfrage Filament
+				#if FILAMENT_PIN>-1
+					Commands::waitUntilEndOfAllMoves();
+					previousMillisCmd = HAL::timeInMilliseconds();
+					Com::printF(Printer::isFilament()?Com::tIsFilamentOK:Com::tIsFilamentOUT);  // eigener Eintrag um Funktion IsFilament() aufzurufen
+				#endif
+			break;
+		#endif
+
+
+	2. In Printer.h wird die Funktion erzeugt ca. Zeile 409 
+
+	// ##################ergänzung für filamentsensor  ve 23022015    ##########################
+	static inline bool isFilament()
+	{
+		#if FILAMENT_PIN>-1
+			return READ(FILAMENT_PIN) != ENDSTOP_X_MIN_INVERTING;
+		#else
+		return false;
+		#endif
+	}
+
+
+	3. In Communication.cpp wird für die Substitution innerhalb der Funktion der darzustellende Text definiert 
+
+	ca. Zeile 134
+
+	FSTRINGVALUE(Com::tIsFilamentOK,"Filament  OK")
+	FSTRINGVALUE(Com::tIsFilamentOUT,"Out of Filament")
+
+
+	4. In Pins.h  den Pin für dei Hardware festlegen, z.B.
+		#define FILAMENT_PIN 34 
+
+	5. In OnePageConfiguration.h oder alternativ in Configuration.h . Damit wird gesteuert, ob eigene Funktionen auch geladen und compliliert werden sollen.
+
+		//###########################  Vivahome additions  #################################
+		#define vivahome_additions			true                // should the vivahome additions be used?
+
+	6. In Configuration.h verschiedene Statics definieren
+	/* 
+				#######################   Own functions 
+	By default all endstops e.g. for filament sensor are pulled up to HIGH. You need a pullup if you
+	use a mechanical endstop connected with GND. Set value to false for no pullup
+	on this endstop.
+
+	*/
+	#define HARDWARE_FILAMENT_SENSOR true   // true if you have a filament sensor
+	#define FILAMENT_SENSOR_TYPE optical    // if you use a HW endstop  = mechanical , else if you use a optical or hall sensor  = optical
+	#define FILAMENT_SENSOR_PIN FILAMENT_PIN  // Pin used for Check Filament  see pins.h
+	#define FILAMENT_SENSOR_PIN_INVERTED true // Set to true to invert the logic of the endstops
+
+	//  ############# ende own functions
+
+	7. In Printer.cpp im Bereich printer::setup  werden noch Vorbereitungen für das Auslesen des Pins definiert
+
+	//  ####################  Ergänzung set input pin for Filament check  ve 23022015
+	#if HARDWARE_FILAMENT_SENSOR
+		#if FILAMENT_PIN>-1
+		  SET_INPUT(FILAMENT_PIN);
+			#if (FILAMENT_SENSOR_TYPE==optical)
+				PULLUP(FILAMENT_PIN,HIGH);
+			#endif
+		#else
+	#error You have defined hardware Filament sensor switch without pin assignment. Set pin number for FILAMENT_SENSOR_PIN
+		#endif
+	#endif
+
+//  ####################  ende Ergänzung pin Filament check
+
+8. 
+
+
+

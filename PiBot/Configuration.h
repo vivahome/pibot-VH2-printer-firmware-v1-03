@@ -1605,6 +1605,20 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     */
     #define FEATURE_DITTO_PRINTING false
 
+	/* 
+				#######################   Own functions 
+	By default all endstops e.g. for filament sensor are pulled up to HIGH. You need a pullup if you
+	use a mechanical endstop connected with GND. Set value to false for no pullup
+	on this endstop.
+
+	*/
+	#define HARDWARE_FILAMENT_SENSOR true   // true if you have a filament sensor
+	#define FILAMENT_SENSOR_TYPE optical    // if you use a HW endstop  = mechanical , else if you use a optical or hall sensor  = optical
+	#define FILAMENT_SENSOR_PIN FILAMENT_PIN  // Pin used for Check Filament  see pins.h
+	#define FILAMENT_SENSOR_PIN_INVERTED true // Set to true to invert the logic of the endstops
+
+	//  ############# ende own functions
+
     /* Servos
 
     If you need to control servos, enable this feature. You can control up to 4 servos.
