@@ -479,7 +479,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     #define EXT1_SELECT_COMMANDS "M117 Extruder 2"
     #define EXT1_DESELECT_COMMANDS "M117 Cancel Extruder 2"
     /** The extruder cooler is a fan to cool the extruder when it is heating. If you turn the etxruder on, the fan goes on. */
-    #define EXT1_EXTRUDER_COOLER_PIN -1
+    #define EXT1_EXTRUDER_COOLER_PIN FAN_PIN   //ve von -1
     /** PWM speed for the cooler fan. 0=off 255=full speed */
     #define EXT1_EXTRUDER_COOLER_SPEED 255
 
@@ -917,10 +917,10 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
   on this endstop.
   */
 #define ENDSTOP_PULLUP_X_MIN true
-#define ENDSTOP_PULLUP_X_MAX true
+#define ENDSTOP_PULLUP_X_MAX true    
 // Set to true to invert the logic of the endstops
 #define ENDSTOP_X_MIN_INVERTING true 
-#define ENDSTOP_X_MAX_INVERTING true
+#define ENDSTOP_X_MAX_INVERTING false  //ve von true
 #else
 /* By default all endstops are pulled up to HIGH. You need a pullup if you
   use a mechanical endstop connected with GND. Set value to false for no pullup
@@ -935,7 +935,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 #if Y_MODEL_ENDSTOP
 #define ENDSTOP_PULLUP_Y_MIN true
 #define ENDSTOP_PULLUP_Y_MAX true
-#define ENDSTOP_Y_MIN_INVERTING true
+#define ENDSTOP_Y_MIN_INVERTING false  //ve von true
 #define ENDSTOP_Y_MAX_INVERTING true
 #else
 #define ENDSTOP_PULLUP_Y_MIN false
@@ -957,14 +957,14 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 	
 // Set the values true where you have a hardware endstop. The Pin number is taken from pins.h.
 #if NUM_ENDSTOP   /////****max and min
-#define MIN_HARDWARE_ENDSTOP_X true
+#define MIN_HARDWARE_ENDSTOP_X false  //ve von true
 #define MAX_HARDWARE_ENDSTOP_X true  
 
 #define MIN_HARDWARE_ENDSTOP_Y true
-#define MAX_HARDWARE_ENDSTOP_Y true 
+#define MAX_HARDWARE_ENDSTOP_Y false  // ve von true 
 
 #define MIN_HARDWARE_ENDSTOP_Z true 
-#define MAX_HARDWARE_ENDSTOP_Z true  
+#define MAX_HARDWARE_ENDSTOP_Z false   // ve von true
 #else    /////****three min endstop
 #define MIN_HARDWARE_ENDSTOP_X true
 #define MAX_HARDWARE_ENDSTOP_X false 
@@ -987,7 +987,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 #if PiBot
 #define X_ENABLE_ON 1 ///***0-> 1
 #define Y_ENABLE_ON 1
-#define Z_ENABLE_ON 1
+#define Z_ENABLE_ON 1     // nach oben
 #else
 #define X_ENABLE_ON 0
 #define Y_ENABLE_ON 0
@@ -1052,7 +1052,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     //If true, axis won't move to coordinates less than zero.
     #define min_software_endstop_x false
     #define min_software_endstop_y false
-    #define min_software_endstop_z false
+    #define min_software_endstop_z true
 
     //If true, axis won't move to coordinates greater than the defined lengths below.
     #define max_software_endstop_x true
@@ -1283,9 +1283,9 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 #define MAX_FEEDRATE_Y 200 ///***300
 #define MAX_FEEDRATE_Z 8  ///***300		
 		/** Home position speed in mm/s. Overridden if EEPROM activated. */
-#define HOMING_FEEDRATE_X 20 ///***80
-#define HOMING_FEEDRATE_Y 20 ///***80
-#define HOMING_FEEDRATE_Z 2  ///***80
+#define HOMING_FEEDRATE_X 40 ///***80
+#define HOMING_FEEDRATE_Y 40 ///***80
+#define HOMING_FEEDRATE_Z 4  ///***80
 #endif
 #else
 #define MAX_FEEDRATE_X 200 ///***300     ////****fit Delta
@@ -1494,7 +1494,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 	#if PiBot_V_1_0==true 
     	#define BAUDRATE 38400  /////***** Hardware Version before than 1.4
     #else
-	    #define BAUDRATE 250000   ////***defualt PiBot
+	    #define BAUDRATE 115200   ////***defualt PiBot
 	#endif
 	#else
 		#define BAUDRATE 250000
@@ -1559,7 +1559,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     IMPORTANT: With mode <>0 some changes in Configuration.h are not set any more, as they are
                taken from the EEPROM.
     */
-    #define EEPROM_MODE 0
+    #define EEPROM_MODE 2
 
 
     /**************** duplicate motor driver ***************
@@ -1574,7 +1574,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 	#define X2_DIR_PIN	  E2_DIR_PIN
 	#define X2_ENABLE_PIN E2_ENABLE_PIN
 
-	#define FEATURE_TWO_YSTEPPER true  // we need two stepper for Y movements  one stepper have to run CCW
+	#define FEATURE_TWO_YSTEPPER false  // we need two stepper for Y movements  one stepper have to run CCW
 	#define Y2_STEP_PIN   E2_STEP_PIN
 	#define Y2_DIR_PIN	  E2_DIR_PIN
 	#define Y2_ENABLE_PIN E2_ENABLE_PIN

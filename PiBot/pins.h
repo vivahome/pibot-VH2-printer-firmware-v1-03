@@ -192,21 +192,21 @@ STEPPER_CURRENT_CONTROL
 #define E0_DIR_PIN          23
 #define E0_ENABLE_PIN       22
 
-#define E1_STEP_PIN         27
-#define E1_DIR_PIN           26
-#define E1_ENABLE_PIN       25
+//#define E1_STEP_PIN         27
+//#define E1_DIR_PIN           26
+//#define E1_ENABLE_PIN       25
 
 //uncomment when use 3rd extruder
-#define E2_STEP_PIN        15
-#define E2_DIR_PIN          14
-#define E2_ENABLE_PIN       39
+//#define E2_STEP_PIN        15
+//#define E2_DIR_PIN          14
+//#define E2_ENABLE_PIN       39
 
 // will not be used because not using 4 Extruder
 // so free up this port for different usage
 //uncomment when use 4th extruder
 //#define E3_STEP_PIN         41
 //#define E3_DIR_PIN          38
-#define E3_ENABLE_PIN       13
+//#define E3_ENABLE_PIN       13
 
 #define SDPOWER            -1
 #define SDCARDDETECT 	   10
@@ -220,11 +220,11 @@ STEPPER_CURRENT_CONTROL
 
 #define HEATER_0_PIN       3    ////**** Extuder1
 #define HEATER_1_PIN       12    ////*** Bed
-#define HEATER_2_PIN       6   ////*** Extuder2
+//#define HEATER_2_PIN       6   ////*** Extuder2
 //uncomment when the 3rd extruder used
-#define HEATER_3_PIN       9   ////*** Extuder3
+//#define HEATER_3_PIN       9   ////*** Extuder3
 //uncomment when the 4th extruder used
-#define HEATER_3_PIN       11   ////*** Extuder4
+//#define HEATER_3_PIN       11   ////*** Extuder4
 
 #define TEMP_0_PIN         14   // ANALOG NUMBERING   ////***Extuder1
 #define TEMP_1_PIN         15   // ANALOG NUMBERING   ////***Bed

@@ -17,18 +17,19 @@
 //#################### steps /mm ########################################
 //Berechnung Zahnriemenantrieb   schritte_pro_mm = (vollschritte_pro_umdrehung * anzahl_mikroschritte) / (zahnriemen_teilung * zähnezahl) 
 //PiBot Microschritte 16,  HDT 3M 9
-#define XAXIS_STEPS_PER_MM             53.33          ///***X steps/mm   Zahnrad 20 Zähne
-#define YAXIS_STEPS_PER_MM             53.33           ///***Y steps/mm   Zahnrad 20 Zähne
+// #define XAXIS_STEPS_PER_MM             53.33          ///***X steps/mm   Zahnrad 20 Zähne
+#define XAXIS_STEPS_PER_MM             53.33          ///***X steps/mm  80 steps Zahnrad 16 Zähne  Teilung=2,5
+#define YAXIS_STEPS_PER_MM             80           ///***Y steps/mm   Zahnrad 20 Zähne
 
 // Berechnung Trapezgewinde  Schritte/mm = (Vollschritte pro Umdrehung x Anzahl Microschritte) / Gewindesteigung
 // PiBot Microschritte 16    Trapezwelle TR 12x3
 #define ZAXIS_STEPS_PER_MM             1066.66667         ///***Z steps/mm      3mm Steigung
 //#################### direction invert #####################################
 #define INVERT_X_DIR                   false            ///***Change the direction by false or true
-#define INVERT_Y_DIR                   false            ///***Change the direction by false or true
-#define INVERT_Z_DIR                   false            ///***Change the direction by false or true
+#define INVERT_Y_DIR                   true            ///***Change the direction by false or true
+#define INVERT_Z_DIR                   true            ///***Change the direction by false or true
 //#################### Endstop option #####################################
-#define X_MODEL_ENDSTOP                mechanical          ///***Endstop Type: mechanical or optical (X min max)
+#define X_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (X min max)
 #define Y_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (Y min max)
 #define Z_MODEL_ENDSTOP                optical          ///***Endstop Type: mechanical or optical (Z min max)
 #define NUM_ENDSTOP                    six            ///***Endstop Number: six  or  three  
@@ -38,7 +39,7 @@
 #define Z_HOME_DIR                     -1               ///***Change the direction by -1 (min) or 1 (max)
 //#################### extruder options ####################################
 #define NUM_EXTRUDER                   1                ///****extruder number
-#define EXT0_STEPS_PER_MM              120              ///***E1 steps/mm
+#define EXT0_STEPS_PER_MM              90              ///***E1 steps/mm
 #define EXT1_STEPS_PER_MM              120              ///***E2 steps/mm (if none, E2 copy the E1 data)
 #define EXT0_INVERSE                   true             ///***E1 direction          
 #define EXT1_INVERSE                   false            ///***E1 direction  (if none, copy the E1 data)
