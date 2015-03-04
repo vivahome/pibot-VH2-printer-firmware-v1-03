@@ -192,9 +192,9 @@ STEPPER_CURRENT_CONTROL
 #define E0_DIR_PIN          23
 #define E0_ENABLE_PIN       22
 
-//#define E1_STEP_PIN         27
-//#define E1_DIR_PIN           26
-//#define E1_ENABLE_PIN       25
+#define E1_STEP_PIN         27
+#define E1_DIR_PIN           26
+#define E1_ENABLE_PIN       25
 
 //uncomment when use 3rd extruder
 //#define E2_STEP_PIN        15
@@ -212,15 +212,15 @@ STEPPER_CURRENT_CONTROL
 #define SDCARDDETECT 	   10
 
 #define LED_PIN            30  
-#define FAN_PIN            7        ////*****fan
+#define FAN_PIN            7        // ve von 7     ////*****fan
 //uncomment when the 2nd fan used - works only without heated bed!
-#define FAN2_PIN           2
+#define FAN2_PIN           -1    // ve von 2
 #define PS_ON_PIN          40    // inactiv ve
 #define KILL_PIN           -1
 
 #define HEATER_0_PIN       3    ////**** Extuder1
 #define HEATER_1_PIN       12    ////*** Bed
-//#define HEATER_2_PIN       6   ////*** Extuder2
+#define HEATER_2_PIN       6   ////*** Extuder2
 //uncomment when the 3rd extruder used
 //#define HEATER_3_PIN       9   ////*** Extuder3
 //uncomment when the 4th extruder used

@@ -479,7 +479,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     #define EXT1_SELECT_COMMANDS "M117 Extruder 2"
     #define EXT1_DESELECT_COMMANDS "M117 Cancel Extruder 2"
     /** The extruder cooler is a fan to cool the extruder when it is heating. If you turn the etxruder on, the fan goes on. */
-    #define EXT1_EXTRUDER_COOLER_PIN FAN_PIN   //ve von -1
+    #define EXT1_EXTRUDER_COOLER_PIN -1   
     /** PWM speed for the cooler fan. 0=off 255=full speed */
     #define EXT1_EXTRUDER_COOLER_SPEED 255
 
@@ -1559,7 +1559,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     IMPORTANT: With mode <>0 some changes in Configuration.h are not set any more, as they are
                taken from the EEPROM.
     */
-    #define EEPROM_MODE 2
+    #define EEPROM_MODE 1
 
 
     /**************** duplicate motor driver ***************
