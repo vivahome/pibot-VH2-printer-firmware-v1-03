@@ -946,7 +946,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 #if Z_MODEL_ENDSTOP
 #define ENDSTOP_PULLUP_Z_MIN true
 #define ENDSTOP_PULLUP_Z_MAX true  
-#define ENDSTOP_Z_MIN_INVERTING true 
+#define ENDSTOP_Z_MIN_INVERTING false   //ve von true 
 #define ENDSTOP_Z_MAX_INVERTING true
 #else
 #define ENDSTOP_PULLUP_Z_MIN false
@@ -1559,7 +1559,7 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     IMPORTANT: With mode <>0 some changes in Configuration.h are not set any more, as they are
                taken from the EEPROM.
     */
-    #define EEPROM_MODE 1
+    #define EEPROM_MODE 3
 
 
     /**************** duplicate motor driver ***************

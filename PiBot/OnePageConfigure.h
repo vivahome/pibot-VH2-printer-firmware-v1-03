@@ -41,7 +41,7 @@
 #define NUM_EXTRUDER                   1                ///****extruder number
 #define EXT0_STEPS_PER_MM              90              ///***E1 steps/mm
 #define EXT1_STEPS_PER_MM              120              ///***E2 steps/mm (if none, E2 copy the E1 data)
-#define EXT0_INVERSE                   true             ///***E1 direction          
+#define EXT0_INVERSE                   false             ///***E1 direction          
 #define EXT1_INVERSE                   false            ///***E1 direction  (if none, copy the E1 data)
 //########################double extruder distance#################################
 #define EXT0_EXT1_DistanceX            55.4             ////****   Relative to the distance of the Extruder1 (0,0)
