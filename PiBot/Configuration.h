@@ -23,6 +23,11 @@
 	it to suitable PiBot hardwares.
 */
 
+/*  This is a adopted version for the VH2 printer from Viva Home GmbH, based on
+	Repetier march 2015
+	by Volkhard Engelstädter
+*/
+
 #ifndef CONFIGURATION_H
 #define CONFIGURATION_H
 
@@ -126,9 +131,12 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 #else
 #define DRIVE_SYSTEM 0   ///default 3->0
 #endif
+
 // ##########################################################################################
 // ##                               Calibration                                            ##
 // ##########################################################################################
+
+#pragma region calibration
     /** Drive settings for the Delta printers
     */
     #if DRIVE_SYSTEM==3
@@ -193,9 +201,18 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 #endif
     #endif
 
+#pragma endregion
+
+
 // ##########################################################################################
-// ##                           Extruder configuration                                     ##
+// #####################      EXTRUDER CONFIGURATION       ##################################
 // ##########################################################################################
+
+// ##########################################################################################
+// ##							Extruder1							                       ##
+// ##########################################################################################
+
+#pragma region extruder1
 
     // for each extruder, fan will stay on until extruder temperature is below this value
     #define EXTRUDER_FAN_COOL_TEMP 37   ////*****so do not fell hot
@@ -345,8 +362,16 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     /** PWM speed for the cooler fan. 0=off 255=full speed */
     #define EXT0_EXTRUDER_COOLER_SPEED 255
 
+#pragma endregion
 
-// =========================== Configuration for second extruder ========================
+
+// ##########################################################################################
+// ##							Extruder2								                   ##
+// ##########################################################################################
+
+#pragma region Extruder 2
+
+
 #if !defined(EXT1_X_OFFSET) && !defined(EXT1_Y_OFFSET)
 #define EXT1_X_OFFSET 0
 #define EXT1_Y_OFFSET 0
@@ -483,12 +508,16 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     /** PWM speed for the cooler fan. 0=off 255=full speed */
     #define EXT1_EXTRUDER_COOLER_SPEED 255
 
+#pragma endregion
 	
+
 // ##########################################################################################
-// ##							Extruder3								 ##
+// ##							Extruder3								                   ##
 // ##########################################################################################
-	
-	// for each extruder, fan will stay on until extruder temperature is below this value
+
+#pragma region Extruder 3	
+
+// for each extruder, fan will stay on until extruder temperature is below this value
 #define EXTRUDER_FAN_COOL_TEMP 50
 	
 #define EXT2_X_OFFSET 0 ///***901
@@ -629,7 +658,21 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 	/** PWM speed for the cooler fan. 0=off 255=full speed */
 #define EXT2_EXTRUDER_COOLER_SPEED 255
 ///////////////////////////////////////////////////////*************************
-////////////////////////////////************************************************
+
+#pragma endregion
+
+
+// ##########################################################################################
+// #####################    END    EXTRUDER CONFIGURATION  ##################################
+// ##########################################################################################
+
+
+// ##########################################################################################
+// ##							control Extruders & Temperatures		                   ##
+// ##########################################################################################
+
+#pragma region control_extruders_temperatures
+
 
     /** If enabled you can select the distance your filament gets retracted during a
     M140 command, after a given temperature is reached. */
@@ -830,9 +873,14 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     // uncomment the following line for MAX31855 support.
     //#define SUPPORT_MAX31855
 
+#pragma endregion
+
+
 // ##########################################################################################
 // ##                          Heated bed configuration                                    ##
 // ##########################################################################################
+
+#pragma region heatbed
 
     /** \brief Set true if you have a heated bed conected to your board, false if not */
 #ifndef HAVE_HEATED_BED
@@ -906,11 +954,14 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     #define MIN_DEFECT_TEMPERATURE -10
     #define MAX_DEFECT_TEMPERATURE 300
 
+#pragma endregion
+
 
 // ##########################################################################################
 // ##                            Endstop configuration                                     ##
 // ##########################################################################################
 
+#pragma region endstops
 #if X_MODEL_ENDSTOP
 /* By default all endstops are pulled up to HIGH. You need a pullup if you
   use a mechanical endstop connected with GND. Set value to false for no pullup
@@ -1134,10 +1185,15 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     #define Y_MIN_POS 0
     #define Z_MIN_POS 0
 
+#pragma endregion
+
 
 // ##########################################################################################
 // ##                           Movement settings                                          ##
 // ##########################################################################################
+
+#pragma region movement_settings
+
     // Microstep setting (Only functional when stepper driver microstep pins are connected to MCU. Currently only works for RAMBO boards
     #define MICROSTEP_MODES {8,8,8,8,8} // [1,2,4,8,16]
 
@@ -1446,9 +1502,14 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     */
     #define LOW_TICKS_PER_MOVE 250000
 
+#pragma endregion
+
+
 // ##########################################################################################
 // ##                           Extruder control                                           ##
 // ##########################################################################################
+
+#pragma region extruder_control
     /* \brief Minimum temperature for extruder operation
 
     This is a saftey value. If your extruder temperature is below this temperature, no
@@ -1474,9 +1535,15 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     to activate the quadratic term. Only adds lots of computations and storage usage. */
     #define ENABLE_QUADRATIC_ADVANCE
 
+#pragma endregion
+
+
 // ##########################################################################################
 // ##                           Communication configuration                                ##
 // ##########################################################################################
+
+#pragma region communication
+
     //// AD595 THERMOCOUPLE SUPPORT UNTESTED... USE WITH CAUTION!!!!
 
     /** \brief Communication speed.
@@ -1559,12 +1626,18 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     IMPORTANT: With mode <>0 some changes in Configuration.h are not set any more, as they are
                taken from the EEPROM.
     */
-    #define EEPROM_MODE 3
+    #define EEPROM_MODE 1
+
+#pragma endregion
 
 
-    /**************** duplicate motor driver ***************
+// ##########################################################################################
+// ##                           duplicate motor driver                                     ##
+// ##########################################################################################
 
-    If you have an unused extruder stepper free, you could use it to drive the second z motor
+#pragma region duplicate_motors
+
+    /* If you have an unused extruder stepper free, you could use it to drive the second z motor
     instead of driving both with a single stepper. The same works for the other axis if needed.
     */
 ////////////////*******with enough driver control pin 
@@ -1600,54 +1673,14 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     #define Z2_ENABLE_PIN E1_ENABLE_PIN
 #endif
 
-    /* Ditto printing allows 2 extruders to do the same action. This effectively allows
-    to print an object two times at the speed of one. Works only with dual extruder setup.
-    */
-    #define FEATURE_DITTO_PRINTING false
+#pragma endregion
 
-	/* 
-				#######################   Own functions 
-	By default all endstops e.g. for filament sensor are pulled up to HIGH. You need a pullup if you
-	use a mechanical endstop connected with GND. Set value to false for no pullup
-	on this endstop.
 
-	*/
-	#define HARDWARE_FILAMENT_SENSOR true   // true if you have a filament sensor
-	#define FILAMENT_SENSOR_TYPE optical    // if you use a HW endstop  = mechanical , else if you use a optical or hall sensor  = optical
-	#define FILAMENT_SENSOR_PIN FILAMENT_PIN  // Pin used for Check Filament  see pins.h
-	#define FILAMENT_SENSOR_PIN_INVERTED true // Set to true to invert the logic of the endstops
+// ##########################################################################################
+// ##                          Z-Probing                                   ##
+// ##########################################################################################
 
-	//  ############# ende own functions
-
-    /* Servos
-
-    If you need to control servos, enable this feature. You can control up to 4 servos.
-    Control the servos with
-    M340 P<servoId> S<pulseInUS>
-    servoID = 0..3
-    Servos are controlled by a pulse width normally between 500 and 2500 with 1500ms in center position. 0 turns servo off.
-
-    WARNING: Servos can draw a considerable amount of current. Make sure your system can handle this or you may risk your hardware!
-    */
-
-    #define FEATURE_SERVO false
-    // Servo pins on a RAMPS board are 11,6,5,4
-    // Servo pins on a PiBot board are 5,8,60,28
-    #if PiBot
-    #define SERVO0_PIN 5
-    #define SERVO1_PIN 8
-    #define SERVO2_PIN 60
-    #define SERVO3_PIN 28
-	#else      ////****ramps
-	#define SERVO0_PIN 11
-	#define SERVO1_PIN 6
-	#define SERVO2_PIN 5
-	#define SERVO3_PIN 4
-	#endif
-
-  /* A watchdog resets the printer, if a signal is not send within predifined time limits. That way we can be sure that the board
-    is always running and is not hung up for some unknown reason. */
-    #define FEATURE_WATCHDOG false      //////******* true->false
+#pragma region z_probing
 
     /* Z-Probing */
 #if PLATFORM_AUTOMATICALLY_CORRECT
@@ -1744,17 +1777,14 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 	#endif
 #endif
 
-	/* Babystepping allows to change z height during print without changing official z height */
-    #define FEATURE_BABYSTEPPING 5     ////****0->2  mm  give a  adjust zone
-    /* If you have a threaded rod, you want a higher multiplicator to see an effect. Limit value to 50 or you get easily overflows.*/
-    #define BABYSTEP_MULTIPLICATOR 1	
+#pragma endregion
 
 
-    /* Define a pin to tuen light on/off */
-	#if PiBot
-    #define CASE_LIGHTS_PIN LED_PIN
-	#endif
-    #define CASE_LIGHT_DEFAULT_ON 1
+// ##########################################################################################
+// ##                          SD cart  Display                                            ##
+// ##########################################################################################
+
+#pragma region display
 
     /** Set to false to disable SD support: */
     #ifndef SDSUPPORT  // Some boards have sd support on board. These define the values already in pins.h
@@ -1937,6 +1967,78 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
  #endif
 #endif
 
+#pragma endregion
+
+
+// ###############################################################################
+// ##                         additional values                                 ##
+// ###############################################################################
+
+#pragma region additonal_values
+
+    /* Ditto printing allows 2 extruders to do the same action. This effectively allows
+    to print an object two times at the speed of one. Works only with dual extruder setup.
+    */
+    #define FEATURE_DITTO_PRINTING false
+
+	/* 
+				#######################   Own functions 
+	By default all endstops e.g. for filament sensor are pulled up to HIGH. You need a pullup if you
+	use a mechanical endstop connected with GND. Set value to false for no pullup
+	on this endstop.
+
+	*/
+	#define HARDWARE_FILAMENT_SENSOR true   // true if you have a filament sensor
+	#define FILAMENT_SENSOR_TYPE optical    // if you use a HW endstop  = mechanical , else if you use a optical or hall sensor  = optical
+	#define FILAMENT_SENSOR_PIN FILAMENT_PIN  // Pin used for Check Filament  see pins.h
+	#define FILAMENT_SENSOR_PIN_INVERTED true // Set to true to invert the logic of the endstops
+
+	//  ############# ende own functions
+
+    /* Servos
+
+    If you need to control servos, enable this feature. You can control up to 4 servos.
+    Control the servos with
+    M340 P<servoId> S<pulseInUS>
+    servoID = 0..3
+    Servos are controlled by a pulse width normally between 500 and 2500 with 1500ms in center position. 0 turns servo off.
+
+    WARNING: Servos can draw a considerable amount of current. Make sure your system can handle this or you may risk your hardware!
+    */
+
+    #define FEATURE_SERVO false
+    // Servo pins on a RAMPS board are 11,6,5,4
+    // Servo pins on a PiBot board are 5,8,60,28
+    #if PiBot
+    #define SERVO0_PIN 5
+    #define SERVO1_PIN 8
+    #define SERVO2_PIN 60
+    #define SERVO3_PIN 28
+	#else      ////****ramps
+	#define SERVO0_PIN 11
+	#define SERVO1_PIN 6
+	#define SERVO2_PIN 5
+	#define SERVO3_PIN 4
+	#endif
+
+  /* A watchdog resets the printer, if a signal is not send within predifined time limits. That way we can be sure that the board
+    is always running and is not hung up for some unknown reason. */
+    #define FEATURE_WATCHDOG false      //////******* true->false
+
+
+	/* Babystepping allows to change z height during print without changing official z height */
+    #define FEATURE_BABYSTEPPING 5     ////****0->2  mm  give a  adjust zone
+    /* If you have a threaded rod, you want a higher multiplicator to see an effect. Limit value to 50 or you get easily overflows.*/
+    #define BABYSTEP_MULTIPLICATOR 1	
+
+
+    /* Define a pin to tuen light on/off */
+	#if PiBot
+    #define CASE_LIGHTS_PIN LED_PIN
+	#endif
+    #define CASE_LIGHT_DEFAULT_ON 1
+
+
 #if DELTA==true
  	 #define XAXIS_STEPS_PER_MM DELTA_AXIS_STEPS_PER_MM
 	 #define YAXIS_STEPS_PER_MM DELTA_AXIS_STEPS_PER_MM
@@ -1964,4 +2066,6 @@ If a motor turns in the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 #endif
 
 #endif
+
+#pragma endregion
 

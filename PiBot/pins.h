@@ -57,6 +57,10 @@ STEPPER_CURRENT_CONTROL
 * PiBot Controller Rev2.0             =316
 ***************************************************************************************/
 
+// #############################  PI BOT Version 1.4 & 1.6 board   ################
+
+#pragma region PIBOT_V1.6
+
 #if MOTHERBOARD == 316
 #define MOTHERBOARD 314
 #define PiBot_V_2_0 true    ///////*******1.4->2.0
@@ -258,6 +262,10 @@ STEPPER_CURRENT_CONTROL
 
 #endif     ///////****** end PiBot for Repetier V1.4 or V1.6
 
+#pragma endregion
+
+//   #####################   PI BOT Version 2.0 board    #####################
+#pragma region PIBOT_V2
 
 #if PiBot_V_2_0==true
 #define X_STEP_PIN         24
@@ -383,10 +391,15 @@ STEPPER_CURRENT_CONTROL
 
 #endif  /////***end PiBot Controller Rev 2.0
 
+#pragma endregion
+
 #else
 #error Oops!  Make sure you have selected the right Controller Board in motherboard list.
 #endif   ///////******end  PiBot for Repetier
 
+
+
+#pragma region other_platforms
 
 /****************************************************************************************
 * Arduino pin assignment
@@ -1966,6 +1979,10 @@ STEPPER_CURRENT_CONTROL
 #define E0_PINS E0_STEP_PIN,E0_DIR_PIN,E0_ENABLE_PIN,
 #define E1_PINS
 #endif
+
+#pragma endregion   // other platforms  //
+
+
 ////////////***************
 #if MOTHERBOARD == 999
 #define KNOWN_BOARD

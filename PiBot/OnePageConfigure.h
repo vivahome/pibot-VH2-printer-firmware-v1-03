@@ -10,20 +10,30 @@
 // 0(decade)=000(binary): A4 A2 A0(physical); 1=001: A4 A2 A1; 2=010: A4 A3 A0; 3=011: A4 A3 A1; /
 // 4(decade)=100(binary): A5 A2 A0(physical); 5=101: A5 A2 A1; 6=110: A5 A3 A0; 7=111: A5 A3 A1; Other integer=0.
 #define Thermistor_Solution            0                ///***PiBot Controller Rev2.0 sensor channel choose, skip this for other boards.
+
 //#################### axis max length ####################################
-#define X_MAX_LENGTH                   360              ///***X Axis Size mm
-#define Y_MAX_LENGTH                   300              ///***Y Axis Size mm
+// für VH2 Drucker
+#define X_MAX_LENGTH                   320              ///***X Axis Size mm
+#define Y_MAX_LENGTH                   320              ///***Y Axis Size mm
 #define Z_MAX_LENGTH                   260              ///***Z Axis Size mm
+
 //#################### steps /mm ########################################
 //Berechnung Zahnriemenantrieb   schritte_pro_mm = (vollschritte_pro_umdrehung * anzahl_mikroschritte) / (zahnriemen_teilung * zähnezahl) 
 //PiBot Microschritte 16,  HDT 3M 9
 // #define XAXIS_STEPS_PER_MM             53.33          ///***X steps/mm   Zahnrad 20 Zähne
-#define XAXIS_STEPS_PER_MM             53.33          ///***X steps/mm  80 steps Zahnrad 16 Zähne  Teilung=2,5
-#define YAXIS_STEPS_PER_MM             80           ///***Y steps/mm   Zahnrad 20 Zähne
+//#define XAXIS_STEPS_PER_MM             53.33          ///***X steps/mm  80 steps Zahnrad 16 Zähne  Teilung=2,5
+//#define YAXIS_STEPS_PER_MM             80           ///***Y steps/mm   Zahnrad 20 Zähne
+
+// An der Maschine angepasste Werte
+#define XAXIS_STEPS_PER_MM	78.9
+#define YAXIS_STEPS_PER_MM  79.8
 
 // Berechnung Trapezgewinde  Schritte/mm = (Vollschritte pro Umdrehung x Anzahl Microschritte) / Gewindesteigung
 // PiBot Microschritte 16    Trapezwelle TR 12x3
-#define ZAXIS_STEPS_PER_MM             1066.66667         ///***Z steps/mm      3mm Steigung
+//#define ZAXIS_STEPS_PER_MM             1066.66667         ///***Z steps/mm      3mm Steigung
+#define ZAXIS_STEPS_PER_MM 1068.5
+
+
 //#################### direction invert #####################################
 #define INVERT_X_DIR                   false            ///***Change the direction by false or true
 #define INVERT_Y_DIR                   true            ///***Change the direction by false or true
@@ -39,7 +49,7 @@
 #define Z_HOME_DIR                     -1               ///***Change the direction by -1 (min) or 1 (max)
 //#################### extruder options ####################################
 #define NUM_EXTRUDER                   1                ///****extruder number
-#define EXT0_STEPS_PER_MM              90              ///***E1 steps/mm
+#define EXT0_STEPS_PER_MM              96.2             ///***E1 steps/mm
 #define EXT1_STEPS_PER_MM              120              ///***E2 steps/mm (if none, E2 copy the E1 data)
 #define EXT0_INVERSE                   false             ///***E1 direction          
 #define EXT1_INVERSE                   false            ///***E1 direction  (if none, copy the E1 data)
